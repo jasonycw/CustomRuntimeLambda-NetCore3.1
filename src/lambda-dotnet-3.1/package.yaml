@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+    Dotnet31:
+        Type: AWS::Serverless::Function
+        Properties:
+            FunctionName: uat-custom-runtime-net-core-31-sam
+            Description: Custom runtime with .NET Core 3.1
+            Handler: not_required_for_custom_runtime
+            Runtime: provided
+            CodeUri: .
+            Timeout: 300
+            MemorySize: 256
+            Role: arn:aws:iam::949519472813:role/core-lambda-role
+            VpcConfig:
+                SubnetIds: ["subnet-4fdf7028","subnet-2f68ba66"]
+                SecurityGroupIds: ["sg-4fe88d29"]
